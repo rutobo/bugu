@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Bugu — A Boy in the Tien Shan</title>
+    <meta name="description" content="Roam the spruce forests, meadows and peaks of the Tien Shan mountains as a boy spending summer at his grandmother's yurt." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <div id="start" class="overlay">
+      <div class="card">
+        <div class="eyebrow">A summer in the Tien Shan</div>
+        <h1>Bugu</h1>
+        <p class="lead">
+          You are a boy spending the summer at your grandmother’s yurt, high in a valley of the Tien Shan, the
+          Celestial Mountains. Spruce forests climb the slopes, marmots whistle on the pastures and, somewhere among
+          the rocks, a snow leopard keeps watch.
+        </p>
+        <p class="lead">Wander where you like. Gather wild apples and edelweiss, and find the valley’s ten secret places.</p>
+        <div class="controls touch-only">
+          <div>Left thumb: walk</div>
+          <div>Right side: drag to look</div>
+          <div>⤒ jump · 🏃 run</div>
+          <div>📖 journal</div>
+        </div>
+        <div class="controls desk-only">
+          <div><kbd>W A S D</kbd> walk</div>
+          <div><kbd>Shift</kbd> run</div>
+          <div><kbd>Space</kbd> jump</div>
+          <div><kbd>Mouse</kbd> look · <kbd>Wheel</kbd> zoom</div>
+          <div><kbd>J</kbd> journal · <kbd>M</kbd> map</div>
+          <div><kbd>T</kbd> hurry time · <kbd>N</kbd> sound</div>
+        </div>
+        <p id="loading" class="loading">Raising the mountains…</p>
+        <div class="buttons">
+          <button id="start-btn" disabled>Loading…</button>
+          <button id="new-btn" class="secondary hidden">New game</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="hud" class="hidden">
+      <div class="stats panel">
+        <div title="Wild apples">🍎 <span id="count-apples">0/0</span></div>
+        <div title="Edelweiss">🌼 <span id="count-edelweiss">0/0</span></div>
+        <div title="Discoveries">🧭 <span id="count-discoveries">0/0</span></div>
+      </div>
+      <div class="map-wrap">
+        <canvas id="minimap" class="panel"></canvas>
+        <div id="clock" class="panel"></div>
+      </div>
+      <div id="toasts"></div>
+      <div id="help" class="panel">
+        <b>WASD</b> walk · <b>Shift</b> run · <b>Space</b> jump · <b>Mouse</b> look · <b>Q/E</b> turn<br />
+        <b>J</b> journal · <b>M</b> big map · <b>T</b> hurry time · <b>N</b> sound · <b>H</b> hide help<br />
+        Click the scene to look with the mouse, <b>Esc</b> to free the cursor
+      </div>
+      <div id="journal" class="panel">
+        <h2>Journal</h2>
+        <p class="j-sub">Ten places in the valley. Grandmother’s hints help you find the ones you’re missing.</p>
+        <ul id="journal-list"></ul>
+        <p class="j-sub">Press <b>J</b> to close.</p>
+      </div>
+      <div id="stick"><div id="stick-knob"></div></div>
+      <button id="btn-jump" class="touch-btn">⤒</button>
+      <button id="btn-run" class="touch-btn">🏃</button>
+      <button id="btn-journal" class="touch-btn small">📖</button>
+    </div>
+
+    <div id="ending" class="overlay">
+      <div class="card">
+        <div class="eyebrow">Evening at the yurt</div>
+        <h1>Son of the mountains</h1>
+        <p class="lead">
+          You have found every secret of the valley. Tonight Grandmother pours tea, the stove crackles, and you tell
+          her about the snow leopard, the ibex and the Mother Deer. She smiles: “The mountains have accepted you.”
+        </p>
+        <div id="ending-stats"></div>
+        <div class="buttons"><button id="ending-close">Keep wandering</button></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
